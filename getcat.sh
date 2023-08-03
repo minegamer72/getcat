@@ -1,10 +1,5 @@
 #!/bin/bash
 
-# this requires 3 things:
-# a working install of curl (available on most gnu/linux systems by default)
-# a working install of jq (available in most gnu/linux package managers)
-# a working install of 'file' (available on most gnu/linux systems by default)
-
 echo "ok" # visual feedback
 
 # first check if the getcatDir exists
