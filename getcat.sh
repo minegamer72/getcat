@@ -2,16 +2,15 @@
 
 echo "ok" # visual feedback
 
-# first check if the getcatDir exists
-if [ ! -d ~/getcatDir ]; then
-    mkdir ~/getcatDir
-fi
-# then set getcatDir to the directory.
-getcatDir=~/getcatDir
-
+# Replace this with your API key!
+API_KEY=""
 
 # curl to get the image onto the machine
-cat_data=$(curl -s https://api.thecatapi.com/v1/images/search | jq -r '.[0].url' | xargs curl -s -o cat)
+if [ "$API_KEY" != "" ]; then
+  cat_data=$(curl -s https://api.thecatapi.com/v1/images/search?api_key=$API_KEY | jq -r '.[0].url' | xargs curl -s -o cat)
+else
+  cat_data=$(curl -s https://api.thecatapi.com/v1/images/search | jq -r '.[0].url' | xargs curl -s -o cat)
+fi
 
 # use 'file' to detect image format
 cat_format=$(file -b --mime-type cat)
@@ -32,11 +31,11 @@ case "$cat_format" in
 esac
 
 # save final image to disk
-mv cat "$getcatDir/cat$file_ext"
+mv cat "./cat$file_ext"
 
 #feh $getcatDir/cat$file_ext
 
-# feh doesn't handle gifs so we're using the flatpak version of gwenview. todo: make this configurable
-flatpak run org.kde.gwenview $getcatDir/cat$file_ext
+# Use nsxiv because it is a very lightweight alternative to feh that handles gifs.
+nsxiv ./cat$file_ext
 echo "done" # visual feedback
 exit 0
