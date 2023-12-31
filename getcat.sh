@@ -15,11 +15,11 @@ fi
 # use 'file' to detect image format
 cat_format=$(file -b --mime-type cat)
 
-# now to find out what file type it is
+# find out what file type it is
 case "$cat_format" in
-    "image/gif") # TheCatAPI serves gifs, so include it here.
+    "image/gif")
         file_ext=".gif";;
-    "image/png") # i have not gotten a .png file from the API yet, but this is here JIC
+    "image/png")
         file_ext=".png";;
     "image/jpeg")
         file_ext=".jpg";;
@@ -32,8 +32,6 @@ esac
 
 # save final image to disk
 mv cat "./cat$file_ext"
-
-#feh $getcatDir/cat$file_ext
 
 # Use nsxiv because it is a very lightweight alternative to feh that handles gifs.
 nsxiv ./cat$file_ext
