@@ -7,3 +7,6 @@ This is a shell script to get a cat image from TheCatAPI.
 2. A working install of *jq* (available in most package managers)
 3. A working install of *file* (available on most GNU/Linux systems)
 4. A working install of *nsxiv* (available in most package managers)
+
+# TODO:
+rewrite this because its stupid
