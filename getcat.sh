@@ -33,7 +33,7 @@ esac
 # save final image to disk
 mv cat "./cat$file_ext"
 
-# Use nsxiv because it is a very lightweight alternative to feh that handles gifs.
+# use nsxiv becasue i like it
 nsxiv ./cat$file_ext
 echo "done" # visual feedback
 exit 0
